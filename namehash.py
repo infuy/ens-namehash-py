@@ -1,7 +1,7 @@
 import codecs
 import functools
 
-from sha3 import sha3_256
+from sha3 import keccak_256 as sha3_256
 
 
 def is_bytes(value):
@@ -18,10 +18,6 @@ def compose(*functions):
 
 def sha3(value):
     return sha3_256(value).digest()
-
-
-# ensure we have the *correct* sha3 installed (keccak)
-assert codecs.encode(sha3(b''), 'hex') == b'c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470'  # noqa
 
 
 def _sub_hash(value, label):
